@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -42,9 +43,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         listViewHolder.name_txt.setText(record.getName());
         listViewHolder.date_txt.setText(record.getDate());
         listViewHolder.start_txt.setText(context.getString(R.string.start_time));
-        listViewHolder.end_txt.setText(record.getDuration());
         listViewHolder.extra_layout.setVisibility(View.GONE);
-        //Todo:setLike
+        if (record.isLike()) {
+            listViewHolder.like = true;
+            listViewHolder.like_btn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_fill_heart));
+        } else {
+            listViewHolder.like = false;
+            listViewHolder.like_btn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_heart));
+        }
+        //Todo:set like and end
     }
 
     @Override
@@ -55,9 +62,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     class ListViewHolder extends RecyclerView.ViewHolder {
         ImageButton like_btn, play_btn, delete_btn;
         LinearLayout item_layout, extra_layout;
-        TextView name_txt, date_txt, start_txt, end_txt;
+        TextView date_txt, start_txt, end_txt;
+        EditText name_txt;
         SeekBar seekBar;
-        boolean play = false;
+        boolean play = false, like = false;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,16 +88,30 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
                 }
             });
             like_btn.setOnClickListener(view -> {
-
+                if (onItemClickListener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    Record record = records.get(getAdapterPosition());
+                    record.setLike(!record.isLike());
+                    records.set(getAdapterPosition(),record);
+                    if (like)
+                        like_btn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_heart));
+                    else
+                        like_btn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_fill_heart));
+                    onItemClickListener.onLikeClick(records.get(getAdapterPosition()),getAdapterPosition());
+                }
             });
             delete_btn.setOnClickListener(view -> {
-
+                if (onItemClickListener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    onItemClickListener.onDeleteClick(records.get(getAdapterPosition()),getAdapterPosition());
+                }
             });
             play_btn.setOnClickListener(view -> {
-                if (play)
-                    play_btn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_play_arrow));
-                else
-                    play_btn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_pause));
+                if (onItemClickListener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    if (play)
+                        play_btn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_play_arrow));
+                    else
+                        play_btn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_pause));
+                    onItemClickListener.onPlayClick(records.get(getAdapterPosition()),play);
+                }
             });
         }
     }
@@ -100,5 +122,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
     public interface OnItemClickListener {
         void onItemClick(Record record);
+
+        void onLikeClick(Record record,int position);
+
+        void onDeleteClick(Record record,int position);
+
+        void onPlayClick(Record record,boolean play);
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/dark_green_circle"/>
+    <item android:drawable="@drawable/green_circle"
+        android:height="80dp"
+        android:width="80dp"
+        android:gravity="center"/>
+    <item android:drawable="@drawable/light_green_circle"
+        android:height="40dp"
+        android:width="40dp"
+        android:gravity="center">
+        <scale android:scaleHeight="2"
+            android:scaleWidth="2"
+            android:scaleGravity="center"
+            android:useIntrinsicSizeAsMinimum="true"/>
+    </item>
+</layer-list>
+

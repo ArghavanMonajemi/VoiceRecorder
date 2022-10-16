@@ -13,14 +13,17 @@
         android:orientation="vertical"
         android:padding="5dp">
 
-        <TextView
+        <EditText
             android:id="@+id/history_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
+            android:inputType="text"
             android:ellipsize="end"
             android:textColor="@color/white"
-            android:textSize="17sp" />
+            android:background="@null"
+            android:textSize="17sp"
+            android:hint="@string/record_name" />
 
         <TextView
             android:id="@+id/history_item_date"
@@ -85,7 +88,8 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/dark_grey"
                     android:src="@drawable/icon_heart"
-                    app:tint="@color/green" />
+                    app:tint="@color/green"
+                    android:contentDescription="@string/content_description" />
 
                 <ImageButton
                     android:id="@+id/history_item_play_btn"
@@ -94,7 +98,8 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/dark_grey"
                     android:src="@drawable/icon_play_arrow"
-                    app:tint="@color/green" />
+                    android:contentDescription="@string/content_description"
+                app:tint="@color/green" />
 
                 <ImageButton
                     android:id="@+id/history_item_delete_btn"
@@ -103,7 +108,8 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/dark_grey"
                     android:src="@drawable/icon_delete"
-                    app:tint="@color/green" />
+                    app:tint="@color/green"
+                    android:contentDescription="@string/content_description" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/drawable/button.xml" value="0.135" />
         <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/drawable/button_background.xml" value="0.135" />
+        <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/drawable/dark_green_circle.xml" value="0.135" />
+        <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/drawable/green_circle.xml" value="0.135" />
         <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/drawable/icon_play_arrow.xml" value="0.135" />
+        <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/drawable/light_green_circle.xml" value="0.135" />
+        <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/drawable/record_button.xml" value="0.135" />
         <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/layout/activity_main.xml" value="0.165625" />
         <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/layout/fragment_history.xml" value="0.165625" />
         <entry key="..\:/Users/Arqavan/AndroidStudioProjects/VoiceRecorder/app/src/main/res/layout/fragment_recorder.xml" value="0.1796875" />
